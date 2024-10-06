@@ -1,0 +1,29 @@
+<section style="margin-bottom: 5%;">
+  <h1><%= @article.title %></h1>
+  <p style="padding-left: 1rem;"><%= @article.body %></p>
+</section>
+
+
+<section style="display: flex; flex: row; gap: 10%;">
+  <div style="max-width: 50%;">
+    <h2>Comments</h2>
+    <div style="padding-left: 1rem;">
+      <%= render @article.comments %>
+    </div>
+  </div>
+
+  <div style="max-width: 50%;">
+    <h2>Add a comment</h2>
+    <div style="padding-left: 1rem;">
+      <%= render "comments/form", article: @article %>
+    </div>
+  </div>
+</section>
+
+<section style="display: flex; flex: row; justify-content: center; gap: 1rem; margin-left: -5%; margin-top: 1rem;">
+  <%= link_to "Edit Article", edit_article_path(@article) %>
+  <%= link_to "Delete Article", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+</section>
